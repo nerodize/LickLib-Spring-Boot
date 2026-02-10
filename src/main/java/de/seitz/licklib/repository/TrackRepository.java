@@ -1,8 +1,6 @@
 package de.seitz.licklib.repository;
 
-import de.seitz.licklib.dto.TrackResponseDTO;
 import de.seitz.licklib.model.Track;
-import de.seitz.licklib.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

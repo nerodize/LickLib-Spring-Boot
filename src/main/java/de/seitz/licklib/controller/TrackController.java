@@ -1,13 +1,10 @@
 package de.seitz.licklib.controller;
 
 
-import de.seitz.licklib.dto.TrackCreateDTO;
-import de.seitz.licklib.dto.TrackResponseDTO;
-import de.seitz.licklib.dto.UserResponseDTO;
-import de.seitz.licklib.model.Track;
-import de.seitz.licklib.model.User;
+import de.seitz.licklib.dto.track.TrackCreateDTO;
+import de.seitz.licklib.dto.track.TrackResponseDTO;
+import de.seitz.licklib.dto.track.TrackUpdateDTO;
 import de.seitz.licklib.service.TrackService;
-import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,7 +54,7 @@ public class TrackController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<TrackResponseDTO> updateTrack(@PathVariable UUID id, @RequestBody TrackResponseDTO track) {
+    public ResponseEntity<TrackResponseDTO> updateTrack(@PathVariable UUID id, @RequestBody TrackUpdateDTO track) {
         trackService.updateTrack(id, track);
         return ResponseEntity.ok().build();
     }

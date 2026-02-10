@@ -1,11 +1,14 @@
 package de.seitz.licklib.service;
 
-import de.seitz.licklib.dto.UserResponseDTO;
+import de.seitz.licklib.dto.user.UserRequestDTO;
+import de.seitz.licklib.dto.user.UserResponseDTO;
 import de.seitz.licklib.model.User;
 import de.seitz.licklib.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +45,7 @@ public class UserService {
 
     // User im param könnte Probleme machen evevntuell
     @Transactional
-    public void updateUser(UUID id, UserResponseDTO userUpdate) {
+    public void updateUser(UUID id, UserRequestDTO userUpdate) {
         User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("not found"));
         // das sollte ein wenig besser strukturiert sein, komischer code
         if (userUpdate.username() != null ) {
@@ -68,12 +71,16 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponseDTO createUser(UserResponseDTO userRequest) {
+    public UserResponseDTO createUser(UserRequestDTO userRequest) {
+        if (userRepository.existsByEmail(userRequest.email())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "email already in use");
+        }
+
         User newUser = new User();
         newUser.setUsername(userRequest.username());
         newUser.setEmail(userRequest.email());
-        User savedUser = userRepository.save(newUser);
-        return mapToResponseDTO(savedUser);
+
+        return mapToResponseDTO(userRepository.save(newUser));
     }
 
 

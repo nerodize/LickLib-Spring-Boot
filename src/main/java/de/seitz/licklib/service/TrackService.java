@@ -1,8 +1,8 @@
 package de.seitz.licklib.service;
 
-
-import de.seitz.licklib.dto.TrackCreateDTO;
-import de.seitz.licklib.dto.TrackResponseDTO;
+import de.seitz.licklib.dto.track.TrackCreateDTO;
+import de.seitz.licklib.dto.track.TrackResponseDTO;
+import de.seitz.licklib.dto.track.TrackUpdateDTO;
 import de.seitz.licklib.model.Track;
 import de.seitz.licklib.model.User;
 import de.seitz.licklib.repository.TrackRepository;
@@ -63,7 +63,7 @@ public class TrackService {
     }
 
     @Transactional
-    public void updateTrack(UUID id, TrackResponseDTO trackData) {
+    public void updateTrack(UUID id, TrackUpdateDTO trackData) {
         Track track = trackRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Track not found"));
 
@@ -83,7 +83,6 @@ public class TrackService {
         Track track = trackRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Track not found" + id));
 
-        TrackResponseDTO response = mapToResponseDTO(track);
         trackRepository.delete(track);
     }
 
@@ -94,7 +93,8 @@ public class TrackService {
                 track.getArtist(),
                 track.getCreator() != null ? track.getCreator().getUsername() : "unknown",
                 track.getDescription(),
-                track.getDuration());
+                track.getDuration()
+        );
     }
 }
 

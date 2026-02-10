@@ -1,11 +1,9 @@
 package de.seitz.licklib.controller;
 
-import de.seitz.licklib.dto.UserResponseDTO;
-import de.seitz.licklib.model.User;
+import de.seitz.licklib.dto.user.UserRequestDTO;
+import de.seitz.licklib.dto.user.UserResponseDTO;
 import de.seitz.licklib.service.UserService;
-import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -43,13 +41,13 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @RequestBody UserResponseDTO user) {
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @RequestBody UserRequestDTO user) {
         userService.updateUser(id, user);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/")
-    public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserResponseDTO createData) {
+    public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserRequestDTO createData) {
         UserResponseDTO savedUser = userService.createUser(createData);
 
         // Wir bauen die URL zum neuen User (z.B. /api/users/uuid)

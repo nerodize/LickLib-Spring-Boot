@@ -16,18 +16,22 @@ public final class Track {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String title;
 
+    @Column(length = 500) // Begrenzung in der DB
     private String description;
 
-    // könnte eigen sein oder bspw. "Jeff Buckley"
+    @Column(nullable = false, length = 100)
     private String artist;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User creator;
-    // sollte eigentlich noch dazu sonst etwas tricky wegen DTO
+
+    @Column(nullable = false)
     private int size;
+
+    @Column(nullable = false)
     private int duration;
 }
