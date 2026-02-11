@@ -5,17 +5,18 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
+import { HomeComponent } from "./components/home/home.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterOutlet,
     NavbarComponent,
-    SidebarComponent
-  ], // Wichtig für die Anzeige
+    SidebarComponent,
+], // Wichtig für die Anzeige
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {

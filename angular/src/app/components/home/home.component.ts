@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
-  templateUrl: './home.html',
-  styleUrl: './home.css',
+  standalone: true,
+  imports: [RouterLink],
+  templateUrl: './home.html'
 })
 export class HomeComponent {
-
+  // Später kannst du hier z.B. trackService.getStats() aufrufen
 }

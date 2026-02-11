@@ -10,7 +10,7 @@ export const routes: Routes = [
 
   { path: 'tracks', component: TrackListComponent },
   { path : 'users', component: UserListComponent },
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'tracks/create', component: TrackCreateComponent},
   { path: 'tracks/:id', component: TrackDetailComponent}
 
