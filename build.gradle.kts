@@ -40,6 +40,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
+	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+
+
 }
 
 tasks.withType<Test> {
