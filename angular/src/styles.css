@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+
+
+/* Grundgerüst */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #000; /* Spotify Black */
+  color: white;
+  font-family: sans-serif;
+}
+
+.layout-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar-nav {
+  width: 240px;
+  background-color: #121212;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav a {
+  color: #b3b3b3;
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.sidebar-nav a:hover, .active-link {
+  color: white !important;
+}
+
+/* Navbar */
+.top-nav {
+  height: 60px;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}

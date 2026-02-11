@@ -1,0 +1,36 @@
+<div class="layout-wrapper" style="display: flex; min-height: 100vh; background: #000; color: white;">
+  
+  <app-sidebar></app-sidebar>
+
+  <main style="flex: 1; display: flex; flex-direction: column;">
+    <app-navbar></app-navbar>
+
+    <div class="content-area" style="padding: 20px;">
+      
+      <h2>Deine Tracks</h2>
+
+      @if (isLoading()) {
+        <p>Daten werden vom Backend geladen...</p>
+      }
+
+      @if (errorMessage()) {
+        <p style="color: #ff4444; border: 1px solid red; padding: 10px;">{{ errorMessage() }}</p>
+      }
+
+      <div class="track-list" style="display: grid; gap: 10px;">
+        @for (track of tracks(); track track.id) {
+          <div style="background: #181818; padding: 15px; border-radius: 8px; border: 1px solid #282828;">
+            <strong style="font-size: 1.1em;">{{ track.title }}</strong><br>
+            <span style="color: #b3b3b3;">{{ track.artist }}</span>
+          </div>
+        } @empty {
+          @if (!isLoading()) {
+            <p>Keine Tracks gefunden.</p>
+          }
+        }
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
