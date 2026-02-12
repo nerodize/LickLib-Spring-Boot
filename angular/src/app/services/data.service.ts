@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Track, TrackCreate, User } from '../models/types'; // Dein Interface von vorhin
+import { Track, TrackCreate, User } from '../models/types';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 export class DataService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8080/api'; // Hier deine URL rein
+  private apiUrl = 'http://localhost:8080/api'; 
 
   getTracks() {
     return this.http.get<Track[]>(`${this.apiUrl}/tracks/`);

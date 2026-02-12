@@ -1,8 +1,8 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataService } from '../../services/data.service'; // Pfad prüfen!
+import { DataService } from '../../services/data.service'; 
 import { Track } from '../../models/types';
-import { RouterLink } from '@angular/router'; // 1. Import hinzufügen
+import { RouterLink } from '@angular/router'; 
 
 @Component({
   selector: 'app-track-list',
@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router'; // 1. Import hinzufügen
 export class TrackListComponent implements OnInit {
   private dataService = inject(DataService);
 
-  // Deine Daten-Container (Signals)
+  // Daten-Container (Signals)
   tracks = signal<Track[]>([]);
   searchQuery = signal('');
   isLoading = signal<boolean>(true);
@@ -27,7 +27,7 @@ export class TrackListComponent implements OnInit {
 
   }
 
-  // Diese Liste wird im HTML für den @for-Loop genutzt
+  // Liste wird im HTML für den @for-Loop genutzt
   filteredTracks = computed(() => {
     const query = this.searchQuery().toLowerCase();
     if (!query) return this.tracks();

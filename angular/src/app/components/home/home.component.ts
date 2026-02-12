@@ -8,5 +8,5 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html'
 })
 export class HomeComponent {
-  // Später kannst du hier z.B. trackService.getStats() aufrufen
+  // trackService.getStats() aufrufen
 }

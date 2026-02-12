@@ -19,7 +19,6 @@ export class UserListComponent implements OnInit {
   distinctUsers = computed(() => {
     const tracks = this.allTracks();
     
-    // Wir nutzen eine Map, um User nach Namen zu gruppieren
     const userMap = new Map<string, { username: string; count: number }>();
 
     tracks.forEach(track => {
@@ -30,7 +29,6 @@ export class UserListComponent implements OnInit {
       });
     });
 
-    // Wir geben die Werte der Map als Array zurück
     return Array.from(userMap.values());
   });
 
@@ -53,7 +51,6 @@ export class UserListComponent implements OnInit {
   }
 
   getTrackCount(username: string): number {
-    // Wir filtern die gesamte Track-Liste nach dem Usernamen
     return this.allTracks().filter(t => t.username === username).length;
   }
 }

@@ -20,7 +20,8 @@ export class TrackCreateComponent {
     description: ['', [Validators.minLength(10), Validators.maxLength(200)]],
     artist: ['', [Validators.required]],
     duration: [0, [Validators.required, Validators.min(1)]],
-    // Für den Übergang: Hier eine ID eines Users aus deiner DB eintragen
+
+    // hardcoded => id parsing fehlt
     creatorId: ['f47ac10b-58cc-4372-a567-0e02b2c3d479', [Validators.required]] 
   });
 
@@ -28,12 +29,12 @@ export class TrackCreateComponent {
     if (this.trackForm.valid) {
       const newTrack = {
         ...this.trackForm.value,
-        size: 1024 // Dummy-Wert für die Dateigröße
+        size: 1024 // Dummy-Wert, @missing value parser
       } as TrackCreate;
 
       this.dataService.createTrack(newTrack).subscribe({
         next: () => {
-          this.router.navigate(['/tracks']); // Zurück zur Liste nach Erfolg
+          this.router.navigate(['/tracks']);
         },
         error: (err) => console.error('Upload fehlgeschlagen', err)
       });

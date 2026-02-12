@@ -5,7 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'app-sidebar',
   standalone: true,
   imports: [RouterLink, RouterLinkActive], // Wichtig!
-  templateUrl: './sidebar.html', // oder dein Pfad
+  templateUrl: './sidebar.html',
   styleUrl: './sidebar.css'
 })
 export class SidebarComponent {}
