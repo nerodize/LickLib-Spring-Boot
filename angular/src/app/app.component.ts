@@ -22,16 +22,15 @@ import { HomeComponent } from "./components/home/home.component";
 export class AppComponent implements OnInit {
   private dataService = inject(DataService);
 
-  // Ein Signal ist ein "intelligenter" Container für deine Daten
+  // intelligenter Container, scheinbar Binding-Ersatz
   tracks = signal<Track[]>([]);
   isLoading = signal<boolean>(true);
   errorMessage = signal<string | null>(null);
 
   ngOnInit() {
-    // Hier rufen wir die Daten beim Start der App ab
     this.dataService.getTracks().subscribe({
       next: (data) => {
-        this.tracks.set(data); // Daten ins Signal schreiben
+        this.tracks.set(data); 
         this.isLoading.set(false);
       },
       error: (err) => {
