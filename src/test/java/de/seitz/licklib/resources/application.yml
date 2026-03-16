@@ -1,0 +1,25 @@
+spring:
+  docker:
+    compose:
+      enabled: false # Richtig, wir wollen kein manuelles Compose im Test
+
+  datasource:
+    # Die URL wird von Testcontainers zur Laufzeit injiziert
+    driver-class-name: org.postgresql.Driver
+
+  flyway:
+    enabled: true # Flyway soll die Migrationen im Container ausführen
+
+  jpa:
+    hibernate:
+      # 'validate' prüft nur, ob deine Entities zum Flyway-Schema passen.
+      # 'none' wäre auch okay. Nutze nicht 'create-drop', wenn Flyway aktiv ist!
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+logging:
+  level:
+    org.flywaydb: DEBUG

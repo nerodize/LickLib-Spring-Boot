@@ -18,7 +18,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**") // Alle Pfade unter /api
-                        .allowedOrigins("http://localhost:4200") // Deine Angular-URL
+                        .allowedOrigins("http://localhost:4200", "http://localhost:5173") // Deine Angular-URL
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);

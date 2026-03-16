@@ -20,21 +20,21 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> getUserById(@PathVariable UUID id) {
         return userService.findUserByID(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @RequestMapping("/search/{username}")
+    @GetMapping("/search/{username}")
     public ResponseEntity<UserResponseDTO> getUserByUsername(@PathVariable String username) {
         return userService.findByUsername(username)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @RequestMapping("/findAll")
+    @GetMapping("/findAll")
     public ResponseEntity<List<UserResponseDTO>> getUsers() {
         List<UserResponseDTO> users = userService.findAllUsers();
         return ResponseEntity.ok(users);

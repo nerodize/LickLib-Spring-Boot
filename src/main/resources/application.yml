@@ -3,7 +3,6 @@ spring:
     compose:
       enabled: false
       lifecycle-management: start-and-stop
-
   datasource:
     url: jdbc:postgresql://localhost:5432/licklib
     username: myuser
@@ -16,7 +15,7 @@ spring:
     baseline-on-migrate: true
     fail-on-missing-locations: true
 
-debug: true
+debug: false
 
 logging:
   level:

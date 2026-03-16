@@ -8,6 +8,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+
+// hier wird nur mit h2 getestet (in memory db)
 @DataJpaTest
 class UserRepositoryTest {
 
