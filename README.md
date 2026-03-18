@@ -1,4 +1,5 @@
-# 🎸 LickLib – Guitar Lick Library Manager
+# LickLib - Library Manager Sandbox
+---
 
 > **Version:** 0.1.0 (Development Snapshot)  
 > **Stand:** März 2026  
