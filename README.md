@@ -11,20 +11,20 @@ Ein Spring Boot Backend zur Verwaltung von Guitar Licks (kurze Gitarrenphrasen/R
 
 ## 📋 Inhaltsverzeichnis
 
-- [Überblick](#überblick)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Architektur](#architektur)
-- [Projektstruktur](#projektstruktur)
-- [Prerequisites](#prerequisites)
-- [Installation & Setup](#installation--setup)
-- [Datenbank-Migration](#datenbank-migration)
-- [Tests ausführen](#tests-ausführen)
-- [API-Endpunkte](#api-endpunkte)
-- [Frontend-Integration](#frontend-integration)
-- [Entwicklungskonzepte](#entwicklungskonzepte)
-- [Bekannte Einschränkungen](#bekannte-einschränkungen)
-- [Roadmap](#roadmap)
+- [Überblick](#-überblick)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Architektur](#-architektur)
+- [Projektstruktur](#-projektstruktur)
+- [Prerequisites](#-prerequisites)
+- [Installation & Setup](#-installation--setup)
+- [Datenbank-Migration](#-datenbank-migration)
+- [Tests ausführen](#-tests-ausführen)
+- [API-Endpunkte](#-api-endpunkte)
+- [Frontend-Integration](#-frontend-integration)
+- [Entwicklungskonzepte](#-entwicklungskonzepte)
+- [Bekannte Einschränkungen](#-bekannte-einschränkungen)
+- [Roadmap](#-roadmap)
 
 ---
 
