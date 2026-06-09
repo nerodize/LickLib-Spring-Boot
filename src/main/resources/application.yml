@@ -3,6 +3,11 @@ spring:
     compose:
       enabled: false
       lifecycle-management: start-and-stop
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
   datasource:
     url: jdbc:postgresql://localhost:5432/licklib
     username: myuser

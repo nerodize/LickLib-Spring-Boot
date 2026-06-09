@@ -10,21 +10,24 @@ import de.seitz.licklib.repository.TrackRepository;
 import de.seitz.licklib.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-// Im Service kein Lombok => better practice mit Constructor Injection
+// In dem Service kein Lombok => better practice mit Constructor Injection (scheinbar nicht)
 @Service
 public class TrackService {
     private final TrackRepository trackRepository;
     private final UserRepository userRepository;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public TrackService(TrackRepository trackRepository, UserRepository userRepository) {
+    public TrackService(TrackRepository trackRepository, UserRepository userRepository, KafkaTemplate<String, String> kafkaTemplate) {
         this.trackRepository = trackRepository;
         this.userRepository = userRepository;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     public List<Track> findAllTracks() {
@@ -59,6 +62,8 @@ public class TrackService {
         track.setCreator(user);
 
         trackRepository.save(track);
+
+        kafkaTemplate.send("track.uploaded", track.getId().toString());
         return mapToResponseDTO(track);
     }
 
